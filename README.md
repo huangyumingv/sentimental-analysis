@@ -1,14 +1,19 @@
-Sentiment Analysis Fundamentals
+
+
 What is Sentiment Analysis?
+
 Sentiment analysis is identifying and extracting opinions within text and extracting attributes from expression through using a system that leverages Natural Language Processing. An opinion is a subjective expression describing people's sentiments, appraisals and feelings toward a subject or topic. Subjective classification can determine whether a sentence or expression is subjective or objective. Polarity classification can determine the sentiment from a body of text (complete document, paragraph, single sentence or sub expression) whether it be positive, negative or neutral. Opinions have two types: direct and comparative opinions. Direct opinions give a subjective expression about an entity directly while comparative opinions express similarities or differences between two or more entities using comparative or superlative form of an adjective or adverb.
 
 What are the Different Types of Sentiment Analysis?
+
 There are many types of sentiment analysis systems ranging from focus on polarity, detection of feelings and emotions or identification of intentions. The types of sentiment analysis include fine-grained sentiment analysis, emotion detection, aspect-based sentiment analysis, intent analysis, multilingual sentiment analysis. Fine-grained sentiment analysis expands the range of polarity from positive, neutral or negative to very positive, positive, neutral, negative or very negative. Emotion detection usually leverage lexicons or machine learning algorithms to list words or body of text and analyze the emotion they convey. Aspect-based sentiment analysis dives into analyzing the particular aspects or features of a product or service people talk about in addition to the polarity level. Intent analysis detects what people would do with a text rather than what people say about that text. Multilingual sentiment analysis detects the language in texts automatically often using machine learning algorithms and performs analysis on the text to retrieve the sentiment.
 
 Why is Sentiment Analysis Important?
+
 80% of the world's data is unstructured, most of it comes from text data, which is difficult, time consuming and expensive to analyze, understand and sort through. Sentiment analysis is critical in allowing companies to make sense of this abundance of unstructured text because they can automate business processes, obtain actionable insight, save hours of manual data processing and ultimately make teams more efficient. Sentiment analysis offers scalability, real-time analysis, consistent criteria. Can you imagine the daunting task of sorting through thousands of tweets, customer support conversations or customer reviews? There's too much data to manually process, but with assistance from a sentiment analysis system, people can process data at scale in an efficient way. Sentiment analysis can be used to identify critical situations in real-time and allow for taking immediate action. Companies who use a centralized sentiment analysis system can apply consistent criteria to all of their data reducing the errors and inconsistencies that come from people judging the sentiment of text. People often time associate their personal experiences, thoughts and beliefs when performing sentiment analysis on a piece of text.
 
 How Does Sentiment Analysis Work?
+
 There are many methods and algorithms used in practice to develop sentiment analysis systems: Rule-Based, Automatic and Hybrid.
 
 Rule-based systems incorporate a set of manually crafted rules to perform sentiment analysis. These rules usually use a variety of inputs, classic Natural Language Processing techniques and lexicons. An example of how to implement Rule-based system is to first define a list of polarized words, second is to count the number of positive words and negative words from input, final is to check if the amount of positive word appearances is greater than negative word appearances, if true, then return positive sentiment else return negative.
