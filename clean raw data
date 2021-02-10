@@ -1,0 +1,58 @@
+%spark2
+import org.apache.spark._
+import org.apache.spark.rdd._
+import org.apache.spark.SparkContext._
+import org.apache.spark.mllib.feature.HashingTF
+import org.apache.spark.{SparkConf, SparkContext}
+import org.apache.spark.mllib.regression.LabeledPoint
+import org.apache.spark.mllib.tree.GradientBoostedTrees
+import org.apache.spark.mllib.tree.configuration.BoostingStrategy
+import org.apache.spark._
+import org.apache.spark.rdd._
+import org.apache.spark.SparkContext._
+import scala.util.{Success, Try}
+
+    val sqlContext = new org.apache.spark.sql.SQLContext(sc)
+
+    var tweetDF = sqlContext.read.json("hdfs:///sandbox/tutorial-files/770/tweets_staging/*")
+    tweetDF.show()
+    
+    
+%spark2
+var messages = tweetDF.select("msg")
+println("Total messages: " + messages.count())
+
+var happyMessages = messages.filter(messages("msg").contains("happy"))
+val countHappy = happyMessages.count()
+println("Number of happy messages: " +  countHappy)
+
+var unhappyMessages = messages.filter(messages("msg").contains(" sad"))
+val countUnhappy = unhappyMessages.count()
+println("Unhappy Messages: " + countUnhappy)
+
+val smallest = Math.min(countHappy, countUnhappy).toInt
+
+//Create a dataset with equal parts happy and unhappy messages
+var tweets = happyMessages.limit(smallest).unionAll(unhappyMessages.limit(smallest))
+
+%spark2
+labeledTweets.take(10).foreach(x => println(x))
+
+%spark2
+val hashingTF = new HashingTF(2000)
+
+//Map the input strings to a tuple of labeled point + input text
+val input_labeled = (labeledTweets.map(
+  t => (t._1, hashingTF.transform(t._2)))
+  .map(x => new LabeledPoint((x._1).toDouble, x._2)))
+  
+ %spark2
+input_labeled.take(10).foreach(println)
+
+
+%spark2
+//We're keeping the raw text for inspection later
+var sample = (labeledTweets.take(1000).map(
+  t => (t._1, hashingTF.transform(t._2), t._2))
+  .map(x => (new LabeledPoint((x._1).toDouble, x._2), x._3)))
+
